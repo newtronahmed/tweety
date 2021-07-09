@@ -11,7 +11,7 @@
 		</div>
 	</li>
 	@empty
-	<div>Follow someone </div>
+	<div class="pl-4">Follow someone </div>
 	@endforelse
 
 </ul>

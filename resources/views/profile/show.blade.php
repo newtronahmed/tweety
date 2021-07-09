@@ -1,7 +1,7 @@
 <x-app>
 <header class="relative">
 
-	<img src="{{asset('images/reactlaravel.jpeg')}}" class="rounded-lg w-full " alt='profilepic' style='max-height: 223px;'>
+	<img src="{{$user->banner}}" class="rounded-lg w-full " alt='profilepic' style='max-height: 223px;'>
 	
 	<img src="{{$user->avatar}}" width="150px"  class="absolute bottom-0 rounded-full transform -translate-x-1/2 translate-y-1/2" style="left:50%; height: 150px;">
 
@@ -12,7 +12,7 @@
 
 			<h2 class="font-bold text-2xl mb-1">{{$user->name}}</h2>
 
-			<p class="text-sm ">Joined {{$user->created_at->diffForHumans()}}</p>
+			<p class="text-sm text-gray-500 ">Joined {{$user->created_at->diffForHumans()}}</p>
 
 		</div>
 		<div class="flex">
@@ -30,11 +30,7 @@
 		</div>
 	</div>
 	<div class="mb-4">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur	
+		{{$user->description}}	
 	</div>
 
 @include('_timeline',['tweets'=>$tweets])

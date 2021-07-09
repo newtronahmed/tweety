@@ -24,6 +24,14 @@
 					<div class="text-sm text-red-400">{{$message}}</div>
 			@enderror
 		</div>
+
+		<div class="mb-6">
+			<label class="font-bold block uppercase " for="description">description</label>
+			<input type="text" id='description' name="description" value="{{$user->description}}" class="border-2 focus:outline-none p-2 w-full border-gray-200 ">
+			@error('description')
+					<div class="text-sm text-red-400">{{$message}}</div>
+			@enderror
+		</div>
 		<div class="mb-6">
 			<label class="font-bold uppercase block " for="avatar">Avatar</label>
 			<div class="flex">
@@ -31,6 +39,16 @@
 				<img width="40" src="{{$user->avatar}}">
 			</div>
 			@error('avatar')
+					<div class="text-sm text-red-400">{{$message}}</div>
+			@enderror
+		</div>
+		<div class="mb-6">
+			<label class="font-bold uppercase block " for="banner">Banner</label>
+			<div class="flex">
+			<input type="file" id="banner"  name="banner"  class="border-2 focus:outline-none p-2 w-full border-gray-200 ">
+				<img width="40" src="{{$user->banner}}">
+			</div>
+			@error('banner')
 					<div class="text-sm text-red-400">{{$message}}</div>
 			@enderror
 		</div>

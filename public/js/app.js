@@ -70083,9 +70083,11 @@ var fetchPosts = function fetchPosts() {
     });
   };
 };
-var addNewPost = function addNewPost(post) {
+var addNewPost = function addNewPost(body) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/tweets', post).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tweet', {
+      body: body
+    }).then(function (response) {
       return dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_0__["NEWPOSTS"],
         payload: response.data
@@ -70208,11 +70210,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Example() {
-  var ren = 0;
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    ren++;
-    console.log(ren);
-  });
+  // let ren=0
+  // useEffect(()=>{
+  //     ren++
+  //     console.log(ren)
+  // })
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
     store: _store__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -70276,16 +70278,15 @@ var Form = function Form(_ref) {
 
   var submitHandler = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
-      var data;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              data = {
-                body: body
-              };
               e.preventDefault();
-              addNewPost(data);
+              _context.next = 3;
+              return addNewPost(body);
+
+            case 3:
               setBody('');
 
             case 4:
@@ -70359,7 +70360,7 @@ function Post(props) {
       key: i,
       className: "p-2 m-1 "
     }, each.body);
-  }) : 'no posts here'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.auth ? 'You are online' : 'You are offline'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }) : 'no posts here'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.auth ? 'You are onlin' : 'You are offline'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       return props.toggleAuth();
     }
@@ -70397,7 +70398,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var initialstate = {};
 var middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]];
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_1__["default"], initialstate, Object(redux__WEBPACK_IMPORTED_MODULE_0__["compose"])(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, middleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_1__["default"], initialstate, Object(redux__WEBPACK_IMPORTED_MODULE_0__["compose"])(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, middleware), window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : function () {}));
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
@@ -70501,6 +70502,7 @@ var inititalstate = {
 
     case _actions_types__WEBPACK_IMPORTED_MODULE_0__["NEWPOSTS"]:
       var items = state.items;
+      console.log(action.payload);
       return _objectSpread(_objectSpread({}, state), {}, {
         items: [].concat(_toConsumableArray(state.items), [action.payload]),
         item: action.payload

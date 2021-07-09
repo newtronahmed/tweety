@@ -10,6 +10,7 @@
             return { ...state, items: action.payload}
         case NEWPOSTS:
           let items = state.items
+          console.log(action.payload)
           return {
             ...state, items:[...state.items,action.payload],
             item:action.payload

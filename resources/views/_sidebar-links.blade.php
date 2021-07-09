@@ -14,6 +14,9 @@
 	<li class="font-bold text-lg mb-4">
 		Bookmarks
 	</li> --}}
+	<li class="font-bold text-lg mb-4">
+		<a href="{{route('notifications')}}">Notifications</a>
+	</li>
 	
 	<li class="font-bold text-lg mb-4">
 		<a href="{{route('profile.show',auth()->user())}}">Profile</a>

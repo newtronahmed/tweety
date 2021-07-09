@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','avatar'
+        'name', 'email', 'password','username','avatar','banner','description'
     ];
 
     /**
@@ -38,12 +38,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function getAvatarAttribute($value){
-        $path= $this->attributes['avatar'] ? '/storage/'.$value : asset('images/download.png');
+        $path= $this->attributes['avatar'] ? "/storage/".$value : asset('images/download.png');
         return  $path;
     }
-    public function setPasswordAttribute($value){
-        $this->attributes['password'] = bcrypt($value);
+    public function getBannerAttribute($value){
+        $path = $this->attributes['banner'] ? "/storage/".$value : asset('images/reactlaravel.jpeg');
+        return $path;
     }
+    // public function getDescriptionAttribute($value){
+    //     $description = $this->attributes['description'] ? $value : "N/A";
+    //     return $description;
+    // }
+    // public function setPasswordAttribute($value){
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
     public function timeline(){
         // include all users tweets
         // include tweets of following users
@@ -58,7 +66,7 @@ class User extends Authenticatable
     }
     public function likes(){
         return $this->hasMany('App\Like');
-    }
+}
    
     public function getRouteKeyName(){
         return 'username';

@@ -1,11 +1,12 @@
 <div class="border border-blue-300 rounded-lg mb-6 px-8 py-6"> 
-    <form method="POST" action='/tweets' enctype="multipart/form-dat">
+    <form method="POST" action='/tweets' enctype="multipart/form-data">
     	@csrf
-        <div class="flex items-center">  
+        <div class="">  
 
-        <textarea name='body' value='{{old('body')}}'  class="w-full border-2 focus:outline-white 
+        <textarea name='body' value='{{old('body')}}'  class="w-full hidden  border-2 focus:outline-white 
          @error('body')  border-2 border-red-400 border-solid
-         @enderror border-gray-300"></textarea>
+         @enderror border-gray-300" id='body'></textarea>
+         <trix-editor input='body'></trix-editor>
             <input type="file" name="image" class="bg-blue-400">
         </div>
 

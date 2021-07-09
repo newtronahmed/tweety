@@ -15,7 +15,7 @@ function Post (props){
         {props.posts.length > 0 ? props.posts.map((each,i)=><div key={i} className='p-2 m-1 '>{each.body}</div>) : 'no posts here' } 
         </div>
         <div>
-            {props.auth ? 'You are online' : 'You are offline'}
+            {props.auth ? 'You are onlin' : 'You are offline'}
         </div>
         <div>
             <button onClick={()=>props.toggleAuth()}>toggleAuth</button>

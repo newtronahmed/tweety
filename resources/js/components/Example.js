@@ -7,11 +7,11 @@ import Post from './post';
 
 
 function Example() {
-    let ren=0
-    useEffect(()=>{
-        ren++
-        console.log(ren)
-    })
+    // let ren=0
+    // useEffect(()=>{
+    //     ren++
+    //     console.log(ren)
+    // })
     return (
         <Provider store={store}>
         <div className="container  ">

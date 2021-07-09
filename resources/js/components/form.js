@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 import {addNewPost} from '../actions/postActions'
 const Form = ({post,addNewPost})=>{
     const [body,setBody] = useState('')
-    const submitHandler = async(e)=>{
-        let data = {body:body}
+    const submitHandler = async (e)=>{
+    
         e.preventDefault()
-        addNewPost(data) 
+       await addNewPost(body) 
         setBody('')  
         
     }

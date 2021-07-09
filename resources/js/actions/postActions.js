@@ -10,7 +10,7 @@ export const fetchPosts = () => dispatch=>{
         payload:data,
     }))
 }
-export const addNewPost = (post)=>dispatch=>{
-    Axios.post('/tweets',post)
+export const addNewPost = (body)=>dispatch=>{
+    Axios.post('/api/tweet',{body})
     .then(response=> dispatch({type:NEWPOSTS, payload:response.data}))
 }

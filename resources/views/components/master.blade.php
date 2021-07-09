@@ -33,12 +33,13 @@
         {{$slot}}
     </div>
     <script src="https://unpkg.com/turbolinks"></script> 
+    @yield('css')
     {{-- <script src="{{asset('js/app.js')}"></script> --}}
     
     <script src="{{asset('js/app.js')}}"></script>
     <script >
         
-        let accordion = document.querySelec torAll('.accordion')
+        let accordion = document.querySelectorAll('.accordion')
 console.log('hello');
 
         for (let index = 0; index < accordion.length; index++) {
@@ -51,5 +52,5 @@ console.log('hello');
         }
     </script>
 </body>
-
+@yield('js')
 </html>
